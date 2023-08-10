@@ -19,6 +19,7 @@ public class CharacterMotor : MonoBehaviour
     private Vector2 _currentMovementDirection;
     private Vector2 _boxSize;
 
+    public event Action OnAlignedWithGrid;
     public event Action<Direction> OnDirectionChanged;
 
     public Direction CurrentDirection
@@ -82,11 +83,7 @@ public class CharacterMotor : MonoBehaviour
         _boxSize = GetComponent<BoxCollider2D>().size;
     }
 
-    // Update is called once per frame
-    private void Update()
-    {
 
-    }
 
     private void FixedUpdate()
     {
@@ -140,8 +137,11 @@ public class CharacterMotor : MonoBehaviour
 
         Physics2D.SyncTransforms();
 
+
+        //Verifica Alinhamento
         if (_rigidbody.position.x == Mathf.CeilToInt(_rigidbody.position.x) && _rigidbody.position.y == Mathf.CeilToInt(_rigidbody.position.y))
         {
+            OnAlignedWithGrid?.Invoke();
             if (_currentMovementDirection != _diseredMovementDirection)
             {
                 if (!Physics2D.BoxCast(_rigidbody.position, _boxSize, 0, _diseredMovementDirection, 1f, 1 << LayerMask.NameToLayer("Level")))
