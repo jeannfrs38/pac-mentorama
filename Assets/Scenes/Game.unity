@@ -276,9 +276,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inky
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 436231121635298265, guid: 0c2b88605f5ae9c4b8dc040821d73e7e, type: 3}
-    - {fileID: 1307124407250350910, guid: 0c2b88605f5ae9c4b8dc040821d73e7e, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c2b88605f5ae9c4b8dc040821d73e7e, type: 3}
 --- !u!1 &519420028
 GameObject:
@@ -792,9 +790,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Clyde
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 9088337837705830400, guid: 799d3ec5443fc934982d83954d10e5af, type: 3}
-    - {fileID: 7642142657000380647, guid: 799d3ec5443fc934982d83954d10e5af, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 799d3ec5443fc934982d83954d10e5af, type: 3}
 --- !u!1 &2006551753
 GameObject:
