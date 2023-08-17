@@ -21,6 +21,11 @@ public class CharacterMotor : MonoBehaviour
 
     public event Action OnAlignedWithGrid;
     public event Action<Direction> OnDirectionChanged;
+    private LayerMask _collisionLayerMask;
+    public LayerMask CollisionLayerMask
+    {
+        get => _collisionLayerMask;
+    }
 
     public Direction CurrentDirection
     {
@@ -81,6 +86,7 @@ public class CharacterMotor : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _boxSize = GetComponent<BoxCollider2D>().size;
+        _collisionLayerMask = LayerMask.GetMask(new string[] { "Level", "Gates" });
     }
 
 
@@ -139,19 +145,19 @@ public class CharacterMotor : MonoBehaviour
 
 
         //Verifica Alinhamento
-        if (_rigidbody.position.x == Mathf.CeilToInt(_rigidbody.position.x) && _rigidbody.position.y == Mathf.CeilToInt(_rigidbody.position.y))
+        if (_rigidbody.position.x == Mathf.CeilToInt(_rigidbody.position.x) && _rigidbody.position.y == Mathf.CeilToInt(_rigidbody.position.y) || _currentMovementDirection == Vector2.zero)
         {
             OnAlignedWithGrid?.Invoke();
             if (_currentMovementDirection != _diseredMovementDirection)
             {
-                if (!Physics2D.BoxCast(_rigidbody.position, _boxSize, 0, _diseredMovementDirection, 1f, 1 << LayerMask.NameToLayer("Level")))
+                if (!Physics2D.BoxCast(_rigidbody.position, _boxSize, 0, _diseredMovementDirection, 1f, _collisionLayerMask))
                 {
                     _currentMovementDirection = _diseredMovementDirection;
                     OnDirectionChanged?.Invoke(CurrentDirection);
                 }
 
             }
-            if (Physics2D.BoxCast(_rigidbody.position, _boxSize, 0, _currentMovementDirection, 1f, 1 << LayerMask.NameToLayer("Level")))
+            if (Physics2D.BoxCast(_rigidbody.position, _boxSize, 0, _currentMovementDirection, 1f, _collisionLayerMask))
             {
                 _currentMovementDirection = Vector2.zero;
                 OnDirectionChanged?.Invoke(CurrentDirection);
