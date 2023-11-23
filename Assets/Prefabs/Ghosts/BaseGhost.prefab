@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feb50c5e0eabe384885a1a8c9ab406c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _vulnerabilityEndingTimer: 3
 --- !u!1 &4959690762931578614
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1515000540235716532, guid: 6a8d69e2d8d76884e96b2814234122ab,
+        type: 3}
+      propertyPath: isVictoryCondition
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2283740690488131617, guid: 6a8d69e2d8d76884e96b2814234122ab,
         type: 3}
       propertyPath: m_RootOrder
@@ -103,7 +108,12 @@ PrefabInstance:
     - target: {fileID: 2283740690488131621, guid: 6a8d69e2d8d76884e96b2814234122ab,
         type: 3}
       propertyPath: m_Name
-      value: Cherry
+      value: BaseFruit(Cherry)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175956987109294734, guid: 6a8d69e2d8d76884e96b2814234122ab,
+        type: 3}
+      propertyPath: isVictoryCondition
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a8d69e2d8d76884e96b2814234122ab, type: 3}

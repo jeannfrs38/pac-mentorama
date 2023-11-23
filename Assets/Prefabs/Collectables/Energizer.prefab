@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: Score
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 1515000540235716532, guid: 6a8d69e2d8d76884e96b2814234122ab,
+        type: 3}
+      propertyPath: Score
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 2283740690488131617, guid: 6a8d69e2d8d76884e96b2814234122ab,
         type: 3}
       propertyPath: m_RootOrder
@@ -89,5 +94,43 @@ PrefabInstance:
       propertyPath: m_Name
       value: Energizer
       objectReference: {fileID: 0}
+    - target: {fileID: 9175956987109294734, guid: 6a8d69e2d8d76884e96b2814234122ab,
+        type: 3}
+      propertyPath: Score
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a8d69e2d8d76884e96b2814234122ab, type: 3}
+--- !u!1 &3457708435146406798 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2283740690488131621, guid: 6a8d69e2d8d76884e96b2814234122ab,
+    type: 3}
+  m_PrefabInstance: {fileID: 3480514564865620907}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &59519585766121676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3457708435146406798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 682c7456cf9e6d845927d9ce06585fa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interval: 0.2
+  _changeState: 0
+--- !u!114 &6471282444957979395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3457708435146406798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7508c0ea953a65e49b61207697dbdc25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 6

@@ -19,8 +19,13 @@ public class CharacterMotor : MonoBehaviour
     private Vector2 _currentMovementDirection;
     private Vector2 _boxSize;
 
+    private Vector3 _initialPosition;
+
     public event Action OnAlignedWithGrid;
     public event Action<Direction> OnDirectionChanged;
+    public event Action OnResetPosition;
+    public event Action OnDisabled;
+
     private LayerMask _collisionLayerMask;
     public LayerMask CollisionLayerMask
     {
@@ -56,6 +61,18 @@ public class CharacterMotor : MonoBehaviour
             return Direction.None;
         }
     }
+
+    public void CollideWithGates(bool shouldCollide)
+    {
+        if (shouldCollide)
+        {
+            _collisionLayerMask = LayerMask.GetMask(new string[] { "Level", "Gates" });
+        }
+        else
+        {
+            _collisionLayerMask = LayerMask.GetMask(new string[] { "Level" });
+        }
+    }
     public void SetMoveDirection(Direction newMoveDirection)
     {
         switch (newMoveDirection)
@@ -84,9 +101,12 @@ public class CharacterMotor : MonoBehaviour
 
     private void Start()
     {
+        _diseredMovementDirection = Vector2.zero;
+        _currentMovementDirection = Vector2.zero;
         _rigidbody = GetComponent<Rigidbody2D>();
         _boxSize = GetComponent<BoxCollider2D>().size;
-        _collisionLayerMask = LayerMask.GetMask(new string[] { "Level", "Gates" });
+        CollideWithGates(true);
+        _initialPosition = transform.position;
     }
 
 
@@ -169,5 +189,15 @@ public class CharacterMotor : MonoBehaviour
         _rigidbody.MovePosition(_rigidbody.position + _currentMovementDirection * moveDistance);
     }
 
-
+    public void ResetPosition()
+    {
+        _diseredMovementDirection = Vector2.zero;
+        _currentMovementDirection = Vector2.zero;
+        transform.position = _initialPosition;
+        OnResetPosition?.Invoke();
+    }
+    private void OnDisable()
+    {
+        OnDisabled?.Invoke();
+    }
 }

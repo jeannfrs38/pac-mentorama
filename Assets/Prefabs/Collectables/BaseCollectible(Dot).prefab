@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 2283740690488131617}
   - component: {fileID: 2283740690488131618}
   - component: {fileID: 2283740690488131619}
+  - component: {fileID: 9175956987109294734}
+  - component: {fileID: -5889469643281579913}
   m_Layer: 10
   m_Name: BaseCollectible(Dot)
   m_TagString: Untagged
@@ -109,3 +111,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9, y: 0.9}
   m_EdgeRadius: 0
+--- !u!114 &9175956987109294734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2283740690488131621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c25d426764e0ec24d9467a03e3c3d056, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isVictoryCondition: 1
+  Score: 10
+--- !u!114 &-5889469643281579913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2283740690488131621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feb92ba71b26dc441b9f72b96e97da97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wakaWaka1: {fileID: 8300000, guid: 4bf67b53f509fcb48a109a779a286126, type: 3}
+  wakaWaka2: {fileID: 8300000, guid: a4d28b293a5dd9444aae4daa03be7285, type: 3}
+  _audioSource: {fileID: 0}
