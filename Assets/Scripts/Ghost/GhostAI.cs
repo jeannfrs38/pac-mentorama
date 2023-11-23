@@ -16,6 +16,7 @@ public class GhostAI : MonoBehaviour
     private GhostState _ghostState;
     public float _vulnerabilityEndingTimer;
     private float _vulnerabilityTimer;
+    private bool _leaveHouse;
 
     private Transform _pacman;
 
@@ -26,6 +27,7 @@ public class GhostAI : MonoBehaviour
         _ghostMove.OnUpdateMoveTarget += GhostMove_OnUpdateMoveTarget;
         _pacman = GameObject.FindWithTag("Player").transform;
         _ghostState = GhostState.Active;
+        _leaveHouse = false;
     }
     private void Update()
     {
@@ -55,6 +57,7 @@ public class GhostAI : MonoBehaviour
         _ghostMove.CharacterMotor.ResetPosition();
         _ghostState = GhostState.Active;
         OnGhostStateChanged?.Invoke(_ghostState);
+        _leaveHouse = false;
     }
     public void StartMoving()
     {
@@ -76,13 +79,39 @@ public class GhostAI : MonoBehaviour
         _ghostMove.CharacterMotor.CollideWithGates(true);
         _ghostState = GhostState.Active;
         OnGhostStateChanged?.Invoke(_ghostState);
+        _leaveHouse = false;
+    }
+
+    public void LeaveHouse() 
+    {
+        _ghostMove.CharacterMotor.CollideWithGates(false);
+        _leaveHouse = true;
     }
     private void GhostMove_OnUpdateMoveTarget()
     {
         switch (_ghostState)
         {
             case GhostState.Active:
-                _ghostMove.SetTargetMoveLocation(_pacman.position);
+                if (_leaveHouse)
+                {
+                    if (transform.position == new Vector3(0, 3, 0))
+                    {
+                        _leaveHouse = false;
+                        _ghostMove.CharacterMotor.CollideWithGates(true);
+                        _ghostMove.SetTargetMoveLocation(_pacman.position);
+
+                    }
+                    else 
+                    {
+                        _ghostMove.SetTargetMoveLocation(new Vector3(0, 3, 0));
+                        
+                    }
+                }
+                else 
+                {
+                    _ghostMove.SetTargetMoveLocation(_pacman.position);
+                }
+               
                 break;
             case GhostState.Vulnerability:
             case GhostState.VulnerabilityEnding:
