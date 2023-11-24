@@ -25,8 +25,5 @@ public class ScoreUI : MonoBehaviour
         _highScoreText.text = $"{highscore:00}";
     }
 
-    void Update()
-    {
 
-    }
 }

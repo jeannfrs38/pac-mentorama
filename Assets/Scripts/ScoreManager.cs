@@ -1,10 +1,13 @@
 using System;
+using System.Runtime.Serialization;
 using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
     private int _currentScore;
     private int _highScore;
+    private int combo;
+    private int ghostScore = 200;
 
     public int HighScore { get => _highScore; }
     public int CurrentScore { get => _currentScore; }
@@ -17,6 +20,13 @@ public class ScoreManager : MonoBehaviour
     }
     void Start()
     {
+
+        var ghosts = FindObjectsOfType<GhostAI>();
+        foreach (GhostAI ghost in ghosts)
+        {
+            ghost.OnDefeated += Ghost_OnDefeated;
+            ghost.OnGhostStateChanged += Ghost_OnGhostStateChanged;    
+        }
         var allCollectibles = FindObjectsOfType<Collectible>();
         foreach (Collectible collectible in allCollectibles)
         {
@@ -25,7 +35,31 @@ public class ScoreManager : MonoBehaviour
 
 
     }
-
+    private void Ghost_OnDefeated()
+    {
+        if (combo < 4)
+        {
+            combo += 1;
+           
+        
+        }
+        int value = combo * ghostScore;
+          _currentScore += value;
+          Debug.Log(value);
+            OnScoreChanged?.Invoke(_currentScore);
+           if (_currentScore >= _highScore)
+           {
+            _highScore = _currentScore;
+            OnHighScoreChanged?.Invoke(_highScore);
+           }
+    }
+    private void Ghost_OnGhostStateChanged(GhostState ghostState)
+    {
+        if (ghostState == GhostState.Active)
+        {
+            combo = 0;
+        }
+    }
     private void Collectible_OnCollected(int score, Collectible collectible)
     {
         _currentScore += score;
@@ -39,5 +73,8 @@ public class ScoreManager : MonoBehaviour
     private void OnDestroy()
     {
         PlayerPrefs.SetInt("high-score", _highScore);
+    }
+    private void Update() {
+         Debug.Log(combo);
     }
 }
