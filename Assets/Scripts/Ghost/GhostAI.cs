@@ -21,7 +21,10 @@ public class GhostAI : MonoBehaviour
     private Transform _pacman;
 
     public event Action<GhostState> OnGhostStateChanged;
+<<<<<<< HEAD
     public event Action OnDefeated;
+=======
+>>>>>>> 4888a89a114d3073f682cd5af81302a550d62510
     void Start()
     {
         _ghostMove = GetComponent<GhostMove>();
@@ -142,7 +145,10 @@ public class GhostAI : MonoBehaviour
             case GhostState.VulnerabilityEnding:
                 if (other.CompareTag("Player"))
                 {
+<<<<<<< HEAD
                     OnDefeated?.Invoke();
+=======
+>>>>>>> 4888a89a114d3073f682cd5af81302a550d62510
                     _ghostState = GhostState.Defeated;
                     OnGhostStateChanged?.Invoke(_ghostState);
                     _ghostMove.CharacterMotor.CollideWithGates(false);
