@@ -1,19 +1,17 @@
 using System;
-<<<<<<< HEAD
+
 using System.Runtime.Serialization;
-=======
->>>>>>> 4888a89a114d3073f682cd5af81302a550d62510
+
 using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
     private int _currentScore;
     private int _highScore;
-<<<<<<< HEAD
+
     private int combo;
     private int ghostScore = 200;
-=======
->>>>>>> 4888a89a114d3073f682cd5af81302a550d62510
+
 
     public int HighScore { get => _highScore; }
     public int CurrentScore { get => _currentScore; }
@@ -26,7 +24,7 @@ public class ScoreManager : MonoBehaviour
     }
     void Start()
     {
-<<<<<<< HEAD
+
 
         var ghosts = FindObjectsOfType<GhostAI>();
         foreach (GhostAI ghost in ghosts)
@@ -34,8 +32,7 @@ public class ScoreManager : MonoBehaviour
             ghost.OnDefeated += Ghost_OnDefeated;
             ghost.OnGhostStateChanged += Ghost_OnGhostStateChanged;    
         }
-=======
->>>>>>> 4888a89a114d3073f682cd5af81302a550d62510
+
         var allCollectibles = FindObjectsOfType<Collectible>();
         foreach (Collectible collectible in allCollectibles)
         {
@@ -44,7 +41,7 @@ public class ScoreManager : MonoBehaviour
 
 
     }
-<<<<<<< HEAD
+
     private void Ghost_OnDefeated()
     {
         if (combo < 4)
@@ -70,9 +67,7 @@ public class ScoreManager : MonoBehaviour
             combo = 0;
         }
     }
-=======
 
->>>>>>> 4888a89a114d3073f682cd5af81302a550d62510
     private void Collectible_OnCollected(int score, Collectible collectible)
     {
         _currentScore += score;
@@ -87,10 +82,9 @@ public class ScoreManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("high-score", _highScore);
     }
-<<<<<<< HEAD
+
     private void Update() {
          Debug.Log(combo);
     }
-=======
->>>>>>> 4888a89a114d3073f682cd5af81302a550d62510
+
 }
